@@ -14,22 +14,22 @@ describe("Create Product", () => {
 
   it("should be able to create a new product", async () => {
     const productData: Product = {
-      name: "Malbec Gold",
-      description: "Malbec Gold Desodorante Colônia 100ml",
-      sku: "B73849",
+      name: "Malbec Absoluto",
+      description: "Malbec Absoluto Desodorante Colônia 100ml",
+      sku: "B75210",
     };
 
     const product = await createProductService.execute(productData);
 
     expect(product).toHaveProperty("id");
-    expect(product.sku).toBe("B73849");
+    expect(product.sku).toBe("B75210");
   });
 
   it("should not be able to create an existing product", async () => {
     const productData: Product = {
-      name: "Malbec Magnetic",
-      description: "Malbec Magnetic Desodorante Colônia, 100ml",
-      sku: "B73743",
+      name: "Malbec Ultra Blue",
+      description: "Malbec Ultra Blue Desodorante Colônia 100ml",
+      sku: "B50119",
     };
 
     await createProductService.execute(productData);
