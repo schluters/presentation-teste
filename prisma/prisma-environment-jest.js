@@ -1,47 +1,50 @@
-const NodeEnvironment = require("jest-environment-node");
-const { v4: uuid } = require("uuid");
-const { execSync } = require("child_process");
-const { resolve } = require("path");
-const { Client } = require("pg");
+import type { Config } from '@jest/types';
+import dotenv from 'dotenv';
+import NodeEnvironment from 'jest-environment-node';
+import { exec } from 'node:child_process';
+import crypto from 'node:crypto';
+import util from 'node:util';
+import { Client } from 'pg';
 
-const prismaCli = "./node_modules/.bin/prisma";
+dotenv.config({ path: '.env.testing' });
 
-require("dotenv").config({
-  path: resolve(__dirname, "..", ".env.test"),
-});
+const execSync = util.promisify(exec);
 
-class CustomEnvironment extends NodeEnvironment {
-  constructor(config) {
+const prismaBinary = './node_modules/.bin/prisma';
+
+export default class PrismaTestEnvironment extends NodeEnvironment {
+  private schema: string;
+  private connectionString: string;
+
+  constructor(config: Config.ProjectConfig) {
     super(config);
+
     const dbUser = process.env.DATABASE_USER;
     const dbPass = process.env.DATABASE_PASS;
     const dbHost = process.env.DATABASE_HOST;
     const dbPort = process.env.DATABASE_PORT;
     const dbName = process.env.DATABASE_NAME;
 
-    this.schema = `teste_schema_${uuid()}`;
+    this.schema = `test_${crypto.randomUUID()}`;
     this.connectionString = `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?schema=${this.schema}`;
   }
 
-  // Cria toda a estrutura
-  setup() {
+  async setup() {
     process.env.DATABASE_URL = this.connectionString;
     this.global.process.env.DATABASE_URL = this.connectionString;
 
-    // Rodar as migrations
-    execSync(`${prismaCli} migrate dev`);
+    await execSync(`${prismaBinary} migrate deploy`);
+
+    return super.setup();
   }
 
-  // Remove toda a estrutura
   async teardown() {
     const client = new Client({
       connectionString: this.connectionString,
     });
 
     await client.connect();
-    // await client.query(`DROP SCHEMA IF EXISTS "${this.schema}" CASCADE`);
+    await client.query(`DROP SCHEMA IF EXISTS "${this.schema}" CASCADE`);
     await client.end();
   }
 }
-
-module.exports = CustomEnvironment;
