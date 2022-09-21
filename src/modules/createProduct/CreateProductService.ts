@@ -1,3 +1,4 @@
+import { Product } from "../../entities/Product";
 import { IProductsRepository } from "../../repositories/IProductsRepository";
 
 interface IProductRequest {
@@ -15,8 +16,8 @@ class CreateProductService {
     if (productAlreadyExists) {
       throw new Error("Product already exists!");
     }
-
-    return this.productsRepository.create({ name, description, sku });
+    const productCreate = Product.create({ name, description, sku });
+    return this.productsRepository.create(productCreate);
   }
 }
 

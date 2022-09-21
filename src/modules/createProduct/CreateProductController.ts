@@ -6,12 +6,18 @@ class CreateProductController {
 
   async handle(request: Request, response: Response) {
     const { name, description, sku } = request.body;
-    const product = await this.createProduct.execute({
-      name,
-      description,
-      sku,
-    });
-    return response.json(product);
+    try {
+      const product = await this.createProduct.execute({
+        name,
+        description,
+        sku,
+      });
+      return response.status(201).json(product);
+    } catch (err: any) {
+      return response.status(400).json({
+        error: err.message,
+      });
+    }
   }
 }
 

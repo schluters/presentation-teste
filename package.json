@@ -7,7 +7,7 @@
     "start": "ts-node src/server.ts",
     "start:dev": "ts-node-dev --exit-child src/server.ts",
     "test": "jest --verbose",
-    "test-coverage": "jest --verbose --coverage"
+    "test:cov": "jest --verbose --coverage"
   },
   "author": "herson schluter",
   "license": "MIT",

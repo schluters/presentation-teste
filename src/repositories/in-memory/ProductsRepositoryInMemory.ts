@@ -10,6 +10,7 @@ class ProductsRepositoryInMemory implements IProductsRepository {
       id: uuid(),
     });
     this.products.push(product);
+    // console.log("ALL PRODUCTS: ", this.products);
     return product;
   }
 

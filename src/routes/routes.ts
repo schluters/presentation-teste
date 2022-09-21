@@ -3,7 +3,7 @@ import { createProductFactory } from "../modules/createProduct/CreateProductFact
 
 const routes = Router();
 
-routes.post("/products", (request, response) => {
+routes.post("/products", async (request, response) => {
   createProductFactory().handle(request, response);
 });
 
