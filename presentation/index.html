@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Boas práticas de teste unitário!</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/night.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Boas práticas de teste unitário!</h3>
+          <!-- <img data-src="./testes.png" /> -->
+          <iframe
+            src="https://giphy.com/embed/ny7UCd6JETnmE"
+            width="480"
+            height="348"
+            frameborder="0"
+            class="giphy-embed"
+            allowfullscreen
+          ></iframe>
+        </section>
+
+        <!-- <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <h2>Piramide de testes</h2>
+          <p>
+            Automatically animate matching elements across slides with
+            <a href="https://revealjs.com/auto-animate/">Auto-Animate</a>.
+          </p>
+          <div class="r-hstack justify-center">
+            <div
+              data-id="box1"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+            <div
+              data-id="box2"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+            <div
+              data-id="box3"
+              style="
+                background: #999;
+                width: 50px;
+                height: 50px;
+                margin: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+        </section>
+
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div class="r-hstack justify-center">
+            <div
+              data-id="box1"
+              data-auto-animate-delay="0.2"
+              style="
+                background: yellow;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">e2e</p>
+            </div>
+            <div
+              data-id="box2"
+              data-auto-animate-delay="0.1"
+              style="
+                background: magenta;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">Integração</p>
+            </div>
+            <div
+              data-id="box3"
+              data-auto-animate-delay="0"
+              style="
+                background: cyan;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">Unitário</p>
+            </div>
+          </div>
+          <h6 style="margin-top: 20px">Piramide de Testes</h6>
+        </section>
+
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div class="r-vstack justify-center">
+            <div
+              data-id="box1"
+              style="
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 75px 100px 75px;
+                border-color: transparent transparent yellow transparent;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: baseline;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">e2e</p>
+            </div>
+            <div
+              data-id="box2"
+              style="
+                width: 150px;
+                height: 0;
+                border-bottom: 100px solid magenta;
+                border-left: 75px solid transparent;
+                border-right: 75px solid transparent;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: baseline;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">Integração</p>
+            </div>
+            <div
+              data-id="box3"
+              style="
+                width: 300px;
+                height: 0;
+                border-bottom: 150px solid cyan;
+                border-left: 100px solid transparent;
+                border-right: 100px solid transparent;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: baseline;
+                font-size: small;
+              "
+            >
+              <p style="color: #111">Unitário</p>
+            </div>
+          </div>
+          <h6 style="margin-top: 20px">Piramide de Testes</h6>
+        </section> -->
+
+        <!-- SHORT -->
+        <section>
+          <h3>#1 Faça testes pequenos</h3>
+          <div style="display: grid; gap: 50px; grid-template-columns: 2fr 1fr">
+            <div>
+              <p>
+                Já que nos testes unitários testamos pequenas unidades de código
+                então criar testes pequenos é um bom caminho.<br />Então no
+                geral um bom teste unitário não deve ser grande.
+              </p>
+              <small>
+                "Se seu teste ficou extenso é um sinal de que talvez seu código
+                precisa ser refatorado."
+              </small>
+            </div>
+            <aside>
+              <iframe
+                src="https://giphy.com/embed/a6O5pzQ8pAPTCoeagK"
+                width="480"
+                height="480"
+                frameborder="0"
+                class="giphy-embed"
+                allowfullscreen
+              ></iframe>
+            </aside>
+          </div>
+        </section>
+
+        <!-- FAST -->
+        <section>
+          <h3>#2 Faça testes rápidos</h3>
+          <div style="display: grid; gap: 50px; grid-template-columns: 1fr 2fr">
+            <div>
+              <iframe
+                src="https://giphy.com/embed/lRnUWhmllPI9a"
+                width="480"
+                height="348"
+                frameborder="0"
+                class="giphy-embed"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div>
+              <p>
+                Os testes unitários são algo que você deve executar quase todo o
+                tempo. Por esse motivo, certifique-se de remover dependências
+                externas e outras coisas que possam atrasar seus testes. Isso
+                geralmente será bancos de dados, sistemas externos ou operações
+                de arquivos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DETERMINISTIC -->
+        <section>
+          <h3>#3 Faça testes determinísticos</h3>
+          <p>
+            De nada adianta criar testes unitários onde não dá pra garantir o
+            seu resultado.<br />Então sempre faça testes determinísticos.<br />Só
+            assim será possível ter segurança no código.<br />E isso vai evitar
+            que um teste passe em um momento e não passe em outro, com a mesma
+            entrada.
+          </p>
+          <p>Testes unitários devem estar funcionando 100% do tempo.</p>
+        </section>
+
+        <!-- NAMES -->
+        <section data-auto-animate>
+          <section data-auto-animate>
+            <h3>#4 Coloque nomes descritivos</h3>
+            <div
+              style="display: grid; gap: 50px; grid-template-columns: 1fr 2fr"
+            >
+              <div>
+                <iframe
+                  src="https://giphy.com/embed/QWigz8zGygObKfShkF"
+                  width="480"
+                  height="270"
+                  frameborder="0"
+                  class="giphy-embed"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div>
+                <p>
+                  Da mesma forma que é importante nomear bem funções é também
+                  importante nomear bem seus testes.<br />
+                  Isso deixa os testes mais simples de entender e manter.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <h4>Por quê?</h4>
+            <p>
+              Padrões de nomenclatura são importantes, porque eles expressam
+              explicitamente a intenção do teste.
+            </p>
+            <br />
+            <small>
+              Testes são mais do que apenas verificar se seu código funciona;
+              eles também fornecem documentação. Apenas examinando o conjunto de
+              testes de unidade, você deve poder inferir o comportamento do seu
+              código sem mesmo examinar o código em si. Além disso, quando os
+              testes falharem, será possível ver exatamente quais cenários não
+              atendem às suas expectativas.
+            </small>
+          </section>
+
+          <section data-auto-animate>
+            <h4 data-id="code-title">Ruim</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="js" data-trim data-line-numbers="1-2">
+              describe("Product", () => {
+                it("Create", async () => {
+                  ...
+                });
+              });
+            </code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h4 data-id="code-title">Melhor</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="js" data-trim data-line-numbers="1-2">
+              describe("Create Product", () => {
+                it("should be able to create a new product", async () => {
+                  ...
+                });
+              });
+            </code></pre>
+            <small>
+              Pessoalmente eu acho que você deve conseguir saber onde o seu
+              código quebrou só pelo teste que falhou.
+            </small>
+          </section>
+        </section>
+
+        <!-- ORGANIZED -->
+        <section data-auto-animate>
+          <section data-auto-animate>
+            <h3>#5 Organize seus testes</h3>
+            <p>
+              A legibilidade é um dos aspectos mais importante ao escrever um
+              teste. A separação de cada uma dessas ações dentro do teste realça
+              claramente as dependências necessárias para chamar seu código, a
+              maneira como seu código está sendo chamado e o que você está
+              tentando declarar. Embora seja possível combinar algumas etapas e
+              reduzir o tamanho do seu teste, a principal meta é tornar o teste
+              o mais legível possível.
+            </p>
+          </section>
+          <section data-auto-animate>
+            <h4>(AAA) - Arrange, Act, Assert</h4>
+            <small>Preparação, Execução, Verificação</small>
+            <p>
+              Organizar, Agir, Afirmar é um padrão comum ao testar unidades.
+              Como o nome implica, ele é composto por três ações principais:
+            </p>
+            <ul>
+              <li>
+                <small
+                  >Organizar seus objetos, criando e configurando-os conforme
+                  necessário.</small
+                >
+              </li>
+              <li><small>Agir sobre um objeto.</small></li>
+              <li>
+                <small>Validar que algo está conforme o esperado.</small>
+              </li>
+            </ul>
+          </section>
+
+          <section data-auto-animate>
+            <h4 data-id="code-title">Ruim</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="js" data-trim data-line-numbers>
+              describe("Create Product", () => {
+                it("should be able to create a new product", async () => {
+                  expect(await createProductService.execute({
+                    name: "Malbec Absoluto",
+                    description: "Malbec Absoluto Desodorante Colônia 100ml",
+                    sku: "B75210",
+                  })).toHaveProperty("id");
+                });
+              });
+            </code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h4 data-id="code-title">Melhor</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="js" data-trim data-line-numbers="|3-8|10-11|13-15">
+              describe("Create Product", () => {
+                it("should be able to create a new product", async () => {
+                  //* Arrange
+                  const productData: Product = {
+                    name: "Malbec Absoluto",
+                    description: "Malbec Absoluto Desodorante Colônia 100ml",
+                    sku: "B75210",
+                  };
+
+                  //! Act
+                  const product = await createProductService.execute(productData);
+
+                  //? Assert
+                  expect(product).toHaveProperty("id");
+                  expect(product.sku).toBe("B75210");
+                });
+              });
+            </code></pre>
+            <small
+              >Separar o teste em blocos, facilita a leitura e entendimento do
+              que é esperado.</small
+            >
+          </section>
+        </section>
+
+        <!-- ASSERT -->
+        <section data-auto-animate>
+          <h3>#6 Só uma asserção por teste</h3>
+          <p>
+            O teste unitário deve testar só uma unidade de código, então não faz
+            sentido ter muitas asserções por teste. <br />
+            Mas isso não quer dizer que você não pode ter um teste com mais de
+            um caso de testes. <br />Um bom teste de unidade deve conter apenas
+            uma afirmação lógica, ou seja, verifique apenas um efeito de
+            output/side do método testado.
+          </p>
+        </section>
+
+        <section data-auto-animate>
+          <h3>Mão na massa!</h3>
+          <iframe
+            src="https://giphy.com/embed/xZsLh7B3KMMyUptD9D"
+            width="480"
+            height="270"
+            frameborder="0"
+            class="giphy-embed"
+            allowfullscreen
+          ></iframe
+          ><br />
+          <small>Bora "testar" na prática?</small>
+        </section>
+
+        <section data-auto-animate>
+          <h3>Referências</h3>
+          <ul>
+            <li>
+              <a
+                href="https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-best-practices"
+                >Melhores práticas de teste de unidade com .NET Core e .NET
+                Standard</a
+              >
+            </li>
+            <li>
+              <a href="https://blog.brq.com/testes-unitarios-com-jest/"
+                >TESTES UNITÁRIOS COM JEST</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://blog.mandic.com.br/artigos/10-dicas-para-escrever-bons-testes-de-unidade/"
+                >10 Dicas para escrever bons testes de unidade</a
+              >
+            </li>
+            <li><a href=""></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
