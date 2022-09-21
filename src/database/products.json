@@ -1,26 +1,14 @@
 [
   {
-    "name": "Malbec Absoluto",
-    "description": "Malbec Absoluto Desodorante Colônia 100ml",
-    "sku": "B75210",
-    "id": "989df3cf-0653-4696-a76b-b6d202be4371"
-  },
-  {
-    "name": "Malbec Ultra Blue",
-    "description": "Malbec Ultra Blue Desodorante Colônia 100ml",
-    "sku": "B50119",
-    "id": "f6967471-19ce-4cd4-9286-33293a6a313e"
-  },
-  {
     "name": "Malbec Magnetic",
     "description": "Malbec Magnetic Desodorante Colônia, 100ml",
     "sku": "B73743",
-    "id": "4f2b79de-fb61-4329-9968-afd71418ef42"
+    "id": "33f561dd-4fc3-4e5d-ad66-eb7a8dd3e799"
   },
   {
     "name": "Malbec Gold",
     "description": "Malbec Gold Desodorante Colônia 100ml",
     "sku": "B73849",
-    "id": "47719b3f-0f7a-4e6b-aa0d-5fdf5c4fc858"
+    "id": "06f36f4c-4f31-4be7-88b4-a3b996b9b563"
   }
 ]

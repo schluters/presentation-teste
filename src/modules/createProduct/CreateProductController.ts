@@ -12,11 +12,11 @@ class CreateProductController {
         description,
         sku,
       });
-      console.log("PRODUCT: ", product);
-      return response.json(product).status(200);
-    } catch (error: any) {
-      console.log("ERROR", { error });
-      return response.json({ error: error.message }).status(400);
+      return response.status(201).json(product);
+    } catch (err: any) {
+      return response.status(400).json({
+        error: err.message,
+      });
     }
   }
 }

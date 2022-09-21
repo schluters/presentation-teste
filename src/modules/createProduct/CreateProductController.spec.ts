@@ -9,7 +9,7 @@ describe("Create Product Controller", () => {
       sku: "B73743",
     });
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
   });
 
@@ -25,7 +25,6 @@ describe("Create Product Controller", () => {
       description: "Malbec Gold Desodorante Colônia 100ml",
       sku: "B73849",
     });
-
     expect(response.status).toBe(400);
   });
 });
