@@ -7,7 +7,10 @@
     "start": "ts-node src/server.ts",
     "start:dev": "ts-node-dev --exit-child src/server.ts",
     "test": "jest --verbose",
-    "test:cov": "jest --verbose --coverage"
+    "test:cov": "jest --verbose --coverage",
+    "studio": "npx prisma studio",
+    "migrate": "npx prisma migrate dev",
+    "generate": "npx prisma generate"
   },
   "author": "herson schluter",
   "license": "MIT",
