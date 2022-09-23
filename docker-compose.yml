@@ -10,6 +10,7 @@ services:
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "presentation"
     ports:
-      - "5432:5432"
-    volumes:
-      - "~/data/postgres:/var/lib/postgresql/data:rw"
+      - 8088:5432
+    # volumes:
+    #   - "./data/postgres:/var/lib/postgresql/data:rw"
+
