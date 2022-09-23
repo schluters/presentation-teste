@@ -36,6 +36,7 @@ Feel free to copy and reproduce this content, as well as use it as study materia
 - **[Express](https://expressjs.com/)**
 - **[Supertest](https://github.com/visionmedia/supertest#readme)**
 
+---
 
 ## :rocket: How to run project
 Clone the project and access the folder
@@ -43,27 +44,53 @@ Clone the project and access the folder
 ```bash
 $ git clone https://github.com/schluters/presentation-teste.git && cd presentation-teste
 ```
-
-Follow the steps below
-```bash
-# Install the dependencies
-$ yarn
-
-# Start the project
-$ yarn start:dev
-
-# The server will start at port:3000 - go to http://localhost:3000
-
-# Run tests
-$ yarn test
-```
+---
 
 ### :memo: Settings .ENV
 ```bash
 # BASE APP
+DATABASE_URL='postgresql://postgres:postgres@localhost:5432/presentation?schema=public'
 PORT=3000
 NODE_ENV=dev
 ```
+---
+
+## :page_facing_up: Follow the steps below
+
+
+#### Create Database from docker-compose
+```bash
+# To start the database
+docker-compose up -d
+
+# To stop the database
+docker-compose down
+
+```
+---
+#### Install the dependencies
+```bash
+yarn
+```
+---
+#### Generate Table in Database
+```bash
+npx prisma migrate dev
+
+npx prisma generate
+```
+
+#### Start the project
+```bash
+yarn start:dev
+```
+*The server will start at port:3000 - go to http://localhost:3000*
+
+#### Run tests
+```bash
+yarn test
+```
+---
 
 ## :book: License
 
